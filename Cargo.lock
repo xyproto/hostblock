@@ -125,7 +125,7 @@ dependencies = [
 
 [[package]]
 name = "hostblock"
-version = "0.1.1"
+version = "0.1.2"
 dependencies = [
  "clippy 0.0.302 (registry+https://github.com/rust-lang/crates.io-index)",
  "getopts 0.2.21 (registry+https://github.com/rust-lang/crates.io-index)",
