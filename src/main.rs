@@ -18,7 +18,7 @@ use std::io::{Read, Write};
 use std::path::Path;
 use std::process::exit;
 
-use rand::{thread_rng, Rng};
+use rand::Rng;
 use unicode_segmentation::UnicodeSegmentation;
 
 use rustbox::{RustBox, Color, Key};
@@ -105,8 +105,8 @@ fn main() {
                                                            .ok()
                                                            .expect("poll failed") {
                 match mkey {
-                    Some(Key::Ctrl('c')) => break,
-                    Some(k) => {
+                    Key::Ctrl('c') => break,
+                    k => {
                         let (quit, new_state) = handle_key(k, &state);
                         if quit {
                             break
@@ -114,7 +114,7 @@ fn main() {
                         state = new_state;
                         rustbox.draw(&state);
                     }
-                    _ => {}
+                    //_ => {}
                 }
             }
         }
@@ -663,7 +663,7 @@ fn gen_pass(num_words: usize) -> String {
                            "pumpkin",
                            "suburban"];
 
-    let mut rng = thread_rng();
+    let mut rng = rand::thread_rng();
     rng.shuffle(&mut choices);
 
     choices.into_iter()
